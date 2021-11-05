@@ -27,8 +27,7 @@ code {
 }
 
 .list-container .list-item:nth-of-type(even){
-  background: gray;
-  color: white;
+  background: whitesmoke;
 } 
 
 .list-container .list-item:nth-of-type(odd){
@@ -52,7 +51,8 @@ code {
   border: none;
   width: 50px;
   border-radius: 4px;
-  background: lightgray;
+  margin-bottom: 8px;
+  background-color: white;
 }
 
 .toggleButton button img {
@@ -73,14 +73,19 @@ code {
 }
 .list-item {
   display: flex;
-  padding: 4px;
-  font-size: 16px;
+  font-size: 14px;
 }
+.list-item p,
+.list-heading p{
+  padding: 8px;
+  margin: 0px;
+}
+
 
 .list-heading {
   display: flex;
-  justify-content: space-between;
   font-weight: bold;
+  font-size: 16px;
 }
 .list-date{
   width: 100px;
