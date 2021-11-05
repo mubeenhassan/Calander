@@ -1,61 +1,58 @@
 const events = [
-  { title: 'All Day Event', start: getDate('YEAR-MONTH-01'), type: 'A' },
   {
-    title: 'Long Event',
-    start: getDate('YEAR-MONTH-07'),
-    end: getDate('YEAR-MONTH-10'),
-    type: 'B',
-  },
-  {
-    title: 'Repeating Event',
-    start: getDate('YEAR-MONTH-09T16:00:00+00:00'),
+    title: 'Event 01',
+    start: '2021-11-01',
+    end: '2021-11-01',
     type: 'A',
   },
   {
-    title: 'Repeating Event',
-    start: getDate('YEAR-MONTH-09T16:00:00+00:00'),
+    title: 'Event 02',
+    start: '2021-11-05',
+    end: '2021-11-05',
+    type: 'B',
+  },
+  {
+    title: 'Event 03',
+    start: '2021-11-07',
+    end: '2021-11-10',
+    type: 'A',
+  },
+  {
+    title: 'Event 04',
+    start: '2021-11-06',
+    end: '2021-11-08',
     type: 'D',
   },
   {
-    groupId: '999',
-    title: 'Repeating Event',
-    start: getDate('YEAR-MONTH-16T16:00:00+00:00'),
+    title: 'Event 05',
+    start: '2021-10-09',
+    end: '2021-10-09',
     type: 'C',
   },
   {
-    title: 'Conference',
-    start: 'YEAR-MONTH-17',
-    end: getDate('YEAR-MONTH-19'),
+    title: 'Event 06',
+    start: '2021-12-21',
+    end: '2021-12-22',
     type: 'A',
   },
   {
-    title: 'Meeting',
-    start: getDate('YEAR-MONTH-18T10:30:00+00:00'),
-    end: getDate('YEAR-MONTH-18T12:30:00+00:00'),
+    title: 'Event 07',
+    start: '2021-12-01',
+    end: '2021-12-01',
     type: 'B',
   },
   {
-    title: 'Lunch',
-    start: getDate('YEAR-MONTH-18T12:00:00+00:00'),
+    title: 'Event 08',
+    start: '2021-11-25',
+    end: '2021-11-25',
     type: 'A',
   },
   {
-    title: 'Birthday Party',
-    start: getDate('YEAR-MONTH-19T07:00:00+00:00'),
+    title: 'Event 09',
+    start: '2021-10-15',
+    end: '2021-10-20',
     type: 'C',
   },
 ]
 
-function getDate(dayString) {
-  const today = new Date();
-  const year = today.getFullYear().toString();
-  let month = (today.getMonth() + 1).toString();
-
-  if (month.length === 1) {
-    month = "0" + month;
-  }
-
-  return dayString.replace("YEAR", year).replace("MONTH", month);
-}
-
-export default events;
+export default events
