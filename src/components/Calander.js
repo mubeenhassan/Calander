@@ -2,6 +2,8 @@ import React from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import events from '../events'
+import list from '../images/list.png'
+import cal from '../images/calendar.png'
 
 export default class Calander extends React.Component {
   constructor(props) {
@@ -44,33 +46,51 @@ export default class Calander extends React.Component {
         updatedEvents.push(e)
       }
     })
-
     this.setState({
       showTypes: values,
       calendarEvents: updatedEvents,
     })
   }
 
+  generateDate = (date) => {
+    var date = new Date(date)
+    var dd = String(date.getDate()).padStart(2, '0')
+    var mm = String(date.getMonth() + 1).padStart(2, '0') //January is 0!
+    var yyyy = date.getFullYear()
+    return dd + '-' + mm + '-' + yyyy
+  }
+
   render() {
     return (
       <div className='app-container'>
         <div className='toggleButton'>
-          <button onClick={this.toggleList}>toggle weekends</button>
+          <button onClick={this.toggleList}>
+            <img src={this.state.calenderList ? list : cal} />
+          </button>
         </div>
         <div className='calender-container'>
           <div className='left-pane'>
             <h3>Filter by event type</h3>
+
             <div className='event-container'>
               {this.state.allTypes.map((type, i) => (
                 <div className='event-checkbox' key={i}>
-                  <input
-                    type='checkbox'
-                    onChange={() => {
-                      this.handleType(type)
-                    }}
-                    checked={this.state.showTypes.includes(type) ? true : false}
-                  />
-                  <label>Event Type {type}</label>
+                  <label className='checkbox'>
+                    <input
+                      className='checkbox-input'
+                      type='checkbox'
+                      onChange={() => {
+                        this.handleType(type)
+                      }}
+                      checked={
+                        this.state.showTypes.includes(type) ? true : false
+                      }
+                    />
+                    <label className='event-name'>Event type {type}</label>
+                    <span className='checkbox-checkmark-box'>
+                      <span className='checkbox-checkmark'></span>
+                    </span>
+                  </label>
                 </div>
               ))}
             </div>
@@ -95,10 +115,10 @@ export default class Calander extends React.Component {
                 <p>Event Name</p>
                 <p>Event Start date</p>
               </div>
-              {events.map((list, i) => (
+              {this.state.calendarEvents.map((list, i) => (
                 <div className='list-item' key={i}>
+                  <p className='list-date'>{this.generateDate(list.start)}</p>
                   <p>{list.title}</p>
-                  <p>{list.start}</p>
                 </div>
               ))}
             </div>
