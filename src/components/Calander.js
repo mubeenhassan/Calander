@@ -112,8 +112,8 @@ export default class Calander extends React.Component {
             <div className='list-container'>
               <h2>Event List</h2>
               <div className='list-heading'>
+                <p className='list-date'>Event date</p>
                 <p>Event Name</p>
-                <p>Event Start date</p>
               </div>
               {this.state.calendarEvents.map((list, i) => (
                 <div className='list-item' key={i}>
