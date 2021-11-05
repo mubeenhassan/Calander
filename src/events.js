@@ -1,36 +1,50 @@
 const events = [
-  { title: "All Day Event", start: getDate("YEAR-MONTH-01") },
+  { title: 'All Day Event', start: getDate('YEAR-MONTH-01'), type: 'A' },
   {
-    title: "Long Event",
-    start: getDate("YEAR-MONTH-07"),
-    end: getDate("YEAR-MONTH-10")
+    title: 'Long Event',
+    start: getDate('YEAR-MONTH-07'),
+    end: getDate('YEAR-MONTH-10'),
+    type: 'B',
   },
   {
-    groupId: "999",
-    title: "Repeating Event",
-    start: getDate("YEAR-MONTH-09T16:00:00+00:00")
+    title: 'Repeating Event',
+    start: getDate('YEAR-MONTH-09T16:00:00+00:00'),
+    type: 'A',
   },
   {
-    groupId: "999",
-    title: "Repeating Event",
-    start: getDate("YEAR-MONTH-16T16:00:00+00:00")
+    title: 'Repeating Event',
+    start: getDate('YEAR-MONTH-09T16:00:00+00:00'),
+    type: 'D',
   },
   {
-    title: "Conference",
-    start: "YEAR-MONTH-17",
-    end: getDate("YEAR-MONTH-19")
+    groupId: '999',
+    title: 'Repeating Event',
+    start: getDate('YEAR-MONTH-16T16:00:00+00:00'),
+    type: 'C',
   },
   {
-    title: "Meeting",
-    start: getDate("YEAR-MONTH-18T10:30:00+00:00"),
-    end: getDate("YEAR-MONTH-18T12:30:00+00:00")
+    title: 'Conference',
+    start: 'YEAR-MONTH-17',
+    end: getDate('YEAR-MONTH-19'),
+    type: 'A',
   },
-  { title: "Lunch", start: getDate("YEAR-MONTH-18T12:00:00+00:00") },
-  { title: "Birthday Party", start: getDate("YEAR-MONTH-19T07:00:00+00:00") },
-  { title: "Meeting", start: getDate("YEAR-MONTH-18T14:30:00+00:00") },
-  { title: "Happy Hour", start: getDate("YEAR-MONTH-18T17:30:00+00:00") },
-  { title: "Dinner", start: getDate("YEAR-MONTH-18T20:00:00+00:00") }
-];
+  {
+    title: 'Meeting',
+    start: getDate('YEAR-MONTH-18T10:30:00+00:00'),
+    end: getDate('YEAR-MONTH-18T12:30:00+00:00'),
+    type: 'B',
+  },
+  {
+    title: 'Lunch',
+    start: getDate('YEAR-MONTH-18T12:00:00+00:00'),
+    type: 'A',
+  },
+  {
+    title: 'Birthday Party',
+    start: getDate('YEAR-MONTH-19T07:00:00+00:00'),
+    type: 'C',
+  },
+]
 
 function getDate(dayString) {
   const today = new Date();

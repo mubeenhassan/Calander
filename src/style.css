@@ -29,7 +29,6 @@ code {
 .app-container {
   font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
   font-size: 14px;
-  width: 900px;
   margin: auto;
 }
 
@@ -68,4 +67,8 @@ code {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
+}
+
+.fc-event-title-container{
+  /* background-color: orange; */
 }
