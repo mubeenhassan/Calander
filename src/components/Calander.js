@@ -111,6 +111,7 @@ export default class Calander extends React.Component {
           </div>
           {this.state.calenderList ? (
             <FullCalendar
+            
             headerToolbar={{
               start: 'prev,next today',
                 center: 'title',
