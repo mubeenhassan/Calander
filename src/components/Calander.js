@@ -1,9 +1,16 @@
 import React from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from "@fullcalendar/timegrid"
+// import yearPlugin  from 'fullcalendar-year-view'
+import interactionPlugin from '@fullcalendar/interaction'
 import events from '../events'
 import list from '../images/list.png'
 import cal from '../images/calendar.png'
+
+
+
+
 
 export default class Calander extends React.Component {
   constructor(props) {
@@ -61,6 +68,7 @@ export default class Calander extends React.Component {
   }
 
   render() {
+    var timelineCustom;
     return (
       <div className='app-container'>
         <div className='toggleButton'>
@@ -103,7 +111,12 @@ export default class Calander extends React.Component {
           </div>
           {this.state.calenderList ? (
             <FullCalendar
-              plugins={[dayGridPlugin]}
+            headerToolbar={{
+              start: 'prev,next today',
+                center: 'title',
+                end: 'dayGridMonth,timeGridWeek,timeGridDay'
+              }}
+              plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
               initialView='dayGridMonth'
               weekends={true}
               events={this.state.calendarEvents}
