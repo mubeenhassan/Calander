@@ -59,15 +59,29 @@ code {
   width: 100%;
 }
 .left-pane {
-  width: 25%;
   height: fit-content;
   padding: 15px;
   background-color: whitesmoke;
 }
 
 .calender-container .fc .fc-button-primary {
-  background-color: red;
+  background-color: lightgray;
+  border: none;
+  color: black;
 }
+
+.calender-container .fc .fc-button-primary:hover {
+  background-color: lightgray;
+}
+
+.app-container .fc .fc-button-primary:not(:disabled):active, .fc .fc-button-primary:not(:disabled).fc-button-active {
+  background-color: blue !important;
+}
+
+.calender-container .fc .fc-button-primary:focus {
+ box-shadow: unset !important;
+}
+
 .download p {
   margin: 5px;
 }
