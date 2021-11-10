@@ -2,12 +2,12 @@ import React from 'react'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from "@fullcalendar/timegrid"
-// import yearPlugin  from 'fullcalendar-year-view'
 import interactionPlugin from '@fullcalendar/interaction'
 import events from '../events'
 import list from '../images/list.png'
 import cal from '../images/calendar.png'
-
+import { CSVLink } from 'react-csv';
+// import ICalendarLink from "react-icalendar-link";
 
 
 
@@ -67,8 +67,28 @@ export default class Calander extends React.Component {
     return dd + '-' + mm + '-' + yyyy
   }
 
+
   render() {
-    var timelineCustom;
+    const headers = [
+      { label: "Title", key: "title" },
+      { label: "Start", key: "start" },
+    ];
+    const data = this.state.calendarEvents;
+
+    const csvReport = {
+      data: data,
+      headers: headers,
+      filename: 'Events.csv'
+    };
+    // var today = new Date();
+
+    // const event = {
+    //   title: 'data.title',
+    //   startTime: today,
+    //   endTime: today,
+    //   type: 'data.type',
+     
+    // }
     return (
       <div className='app-container'>
         <div className='toggleButton'>
@@ -79,7 +99,6 @@ export default class Calander extends React.Component {
         <div className='calender-container'>
           <div className='left-pane'>
             <h3>Filter by event type</h3>
-
             <div className='event-container'>
               {this.state.allTypes.map((type, i) => (
                 <div className='event-checkbox' key={i}>
@@ -104,15 +123,18 @@ export default class Calander extends React.Component {
             </div>
             <h3>Filter by event type</h3>
             <div className='download'>
-              <p>Download as CSV</p>
-              <p>Download as ical</p>
+              <CSVLink {...csvReport}>Download as CVS</CSVLink>
+              {/* <ICalendarLink event={event}>
+                 Download as ical
+               </ICalendarLink>;  */}
               <p>Download as ics</p>
             </div>
           </div>
           {this.state.calenderList ? (
             <FullCalendar
-            headerToolbar={{
-              start: 'prev,next today',
+
+              headerToolbar={{
+                start: 'prev,next today',
                 center: 'title',
                 end: 'dayGridMonth,timeGridWeek,timeGridDay'
               }}
