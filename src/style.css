@@ -92,6 +92,8 @@ code {
 .list-item p,
 .list-heading p{
   padding: 8px;
+  width: 100px;
+  text-align: center;
   margin: 0px;
 }
 
