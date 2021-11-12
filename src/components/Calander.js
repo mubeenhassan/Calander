@@ -7,10 +7,6 @@ import events from '../events'
 import list from '../images/list.png'
 import cal from '../images/calendar.png'
 import { CSVLink } from 'react-csv';
-// import ICalendarLink from "react-icalendar-link";
-
-
-
 
 export default class Calander extends React.Component {
   constructor(props) {
@@ -67,11 +63,12 @@ export default class Calander extends React.Component {
     return dd + '-' + mm + '-' + yyyy
   }
 
-
   render() {
     const headers = [
       { label: "Title", key: "title" },
-      { label: "Start", key: "start" },
+      { label: "Start Date", key: "start" },
+      { label: "End date", key: "end" },
+      { label: "Event Type", key: "type" },
     ];
     const data = this.state.calendarEvents;
 
@@ -80,15 +77,7 @@ export default class Calander extends React.Component {
       headers: headers,
       filename: 'Events.csv'
     };
-    // var today = new Date();
 
-    // const event = {
-    //   title: 'data.title',
-    //   startTime: today,
-    //   endTime: today,
-    //   type: 'data.type',
-     
-    // }
     return (
       <div className='app-container'>
         <div className='toggleButton'>
@@ -124,9 +113,6 @@ export default class Calander extends React.Component {
             <h3>Filter by event type</h3>
             <div className='download'>
               <CSVLink {...csvReport}>Download as CVS</CSVLink>
-              {/* <ICalendarLink event={event}>
-                 Download as ical
-               </ICalendarLink>;  */}
               <p>Download as ics</p>
             </div>
           </div>
@@ -147,13 +133,17 @@ export default class Calander extends React.Component {
             <div className='list-container'>
               <h2>Event List</h2>
               <div className='list-heading'>
-                <p className='list-date'>Event date</p>
                 <p>Event Name</p>
+                <p>Event date</p>
+                <p>End Date</p>
+                <p>Event Type</p>
               </div>
               {this.state.calendarEvents.map((list, i) => (
                 <div className='list-item' key={i}>
-                  <p className='list-date'>{this.generateDate(list.start)}</p>
                   <p>{list.title}</p>
+                  <p>{this.generateDate(list.start)}</p>
+                  <p>{list.end}</p>
+                  <p>{list.type}</p>
                 </div>
               ))}
             </div>
