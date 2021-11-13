@@ -12,13 +12,15 @@ const events = [
     type: 'B',
   },
   {
-    title: 'Event 03',
+    title: 'Event this is my text and also link to facebook.com so please click here to redirect tofase book p 03',
+    url: 'https://www.facebook.com/',
     start: '2021-11-07',
     end: '2021-11-10',
     type: 'A',
   },
   {
     title: 'Event 04',
+    url: 'https://www.wishyoo.com/',
     start: '2021-11-06',
     end: '2021-11-08',
     type: 'D',

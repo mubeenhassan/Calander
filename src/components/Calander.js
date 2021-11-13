@@ -6,7 +6,9 @@ import interactionPlugin from '@fullcalendar/interaction'
 import events from '../events'
 import list from '../images/list.png'
 import cal from '../images/calendar.png'
+import tippy from 'tippy.js'
 import { CSVLink } from 'react-csv';
+
 
 export default class Calander extends React.Component {
   constructor(props) {
@@ -18,6 +20,23 @@ export default class Calander extends React.Component {
       showTypes: [],
     }
   }
+ 
+  handleMouseEnter = (arg) => {
+    tippy(arg.el, {
+      content: arg.event.title,
+      arrow:true
+    });
+  }
+
+  eventClick = (event) => {
+    if (event.event.url) {
+      event.jsEvent.preventDefault();
+      window.open(event.event.url, "_blank");
+      // return false;
+
+    }
+  }
+
   componentDidMount() {
     let allType = []
     this.getUniqueListByTypes(events).map((item) => {
@@ -113,12 +132,13 @@ export default class Calander extends React.Component {
             <h3>Filter by event type</h3>
             <div className='download'>
               <CSVLink {...csvReport}>Download as CVS</CSVLink>
-              <p>Download as ics</p>
+              <a>Download as ics</a>
             </div>
           </div>
           {this.state.calenderList ? (
             <FullCalendar
-
+              eventMouseEnter={this.handleMouseEnter}
+              eventPositioned={this.handleEventPositioned}
               headerToolbar={{
                 start: 'prev,next today',
                 center: 'title',
