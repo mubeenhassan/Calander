@@ -32,8 +32,6 @@ export default class Calander extends React.Component {
     if (event.event.url) {
       event.jsEvent.preventDefault();
       window.open(event.event.url, "_blank");
-      // return false;
-
     }
   }
 
@@ -137,6 +135,7 @@ export default class Calander extends React.Component {
           </div>
           {this.state.calenderList ? (
             <FullCalendar
+              eventClick={this.eventClick}
               eventMouseEnter={this.handleMouseEnter}
               eventPositioned={this.handleEventPositioned}
               headerToolbar={{
