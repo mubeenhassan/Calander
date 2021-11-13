@@ -82,8 +82,15 @@ code {
  box-shadow: unset !important;
 }
 
-.download p {
+.download {
+  display: flex;
+  flex-direction: column;
+}
+
+.download a {
   margin: 5px;
+  text-decoration: underline;
+  color: blue;
 }
 .list-item {
   display: flex;
@@ -178,4 +185,73 @@ code {
 
 .event-name{
   width: 125px;
+}
+
+.event-tooltip {
+  width: fit-content;
+  text-align: center;
+  background-color: gray;
+  border: solid 2px black;
+}
+
+.tippy-content {
+  transition-duration: 300ms;
+  background: grey;
+  padding: 10px;
+  border-radius: 3px;
+  color: white;
+  text-align: center;
+}
+
+@media screen and (max-width: 992px){
+  .app-container {
+    width:90%
+  }
+  .calender-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .calender-container .fc-media-screen, .list-container {
+    margin: auto;
+    margin-top: 10px;
+  }
+ .event-container {
+   display: flex;
+   flex-flow: wrap;
+ }
+
+ .download {
+  display: flex;
+  flex-direction: row;
+}
+
+.event-name {
+  margin-left: 12px;
+}
+
+}
+
+@media screen and (max-width: 580px) {
+  .fc .fc-toolbar-title {
+    font-size: 16px !important;
+  }  
+}
+
+@media screen and (max-width: 480px) {
+  .fc .fc-toolbar-title {
+    font-size: 14px !important;
+  }  
+  .fc .fc-button-group > .fc-button {
+    padding: 5px !important;
+  }
+  
+  .fc-toolbar-chunk {
+    text-align: center;
+  }
+
+  .fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
+    margin-left: 0 !important;
+  }
+
 }
