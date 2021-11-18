@@ -107,6 +107,11 @@ code {
   margin: 0px;
 }
 
+.list-heading  > p:first-child,
+.list-item > p:first-child{
+  max-width: 300px;
+  width: 100%;
+}
 
 .list-heading {
   display: flex;
