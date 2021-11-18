@@ -23,7 +23,10 @@ code {
   width: 100%;
   margin-left: 30px;
   background-color: whitesmoke;
-  padding: 15px;
+}
+
+.calender-container .fc-media-screen{
+  padding: 16px;
 }
 
 .list-container .list-item:nth-of-type(even){
@@ -204,12 +207,10 @@ code {
 }
 
 @media screen and (max-width: 992px){
-  .app-container {
-    width:90%
-  }
   .calender-container {
     display: flex;
     flex-direction: column;
+    padding: 8px;
   }
 
   .calender-container .fc-media-screen, .list-container {
@@ -219,6 +220,7 @@ code {
  .event-container {
    display: flex;
    flex-flow: wrap;
+   justify-content: space-between;
  }
 
  .download {
@@ -235,12 +237,28 @@ code {
 @media screen and (max-width: 580px) {
   .fc .fc-toolbar-title {
     font-size: 16px !important;
-  }  
+  }
+
+  .toggleButton{
+    margin-top: 8px;
+  }
+
+  .left-pane{
+    padding: 4px 16px;
+  }
+
+  .checkbox-checkmark{
+    transform: scale(0.75);
+  }
+  .event-name{
+    width: 96px;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .fc .fc-toolbar-title {
     font-size: 14px !important;
+    margin-top: -40px !important;
   }  
   .fc .fc-button-group > .fc-button {
     padding: 5px !important;
@@ -249,9 +267,27 @@ code {
   .fc-toolbar-chunk {
     text-align: center;
   }
+  .fc .fc-toolbar.fc-header-toolbar{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fc .fc-toolbar.fc-header-toolbar > div{
+    margin-top: 16px;
+  }
+  .calender-container .fc-media-screen{
+    margin: 0px;
+    padding: 0px 16px;
+  }
 
   .fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
     margin-left: 0 !important;
+  }
+
+  .fc-header-toolbar > .fc-toolbar-chunk:first-child{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
 }
