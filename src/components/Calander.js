@@ -3,31 +3,22 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from "@fullcalendar/timegrid"
 import interactionPlugin from '@fullcalendar/interaction'
-import events from '../events'
 import list from '../images/list.png'
 import cal from '../images/calendar.png'
 import tippy from 'tippy.js'
 import { CSVLink } from 'react-csv';
 
-
-export default function Calander() {
+export default function Calander({eventsData}) {
   const [calenderList, setCalenderList] = useState(true)
-  const [calendarEvents, setCalendarEvents] = useState(events);
+  const [calendarEvents, setCalendarEvents] = useState([]);
   const [allTypes, setAllTypes] = useState([])
   const [showTypes, setShowTypes] = useState([])
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     calenderList: true,
-  //     calendarEvents: events,
-  //     allTypes: [],
-  //     showTypes: [],
-  //   }
-  // }
  
   const handleMouseEnter = (arg) => {
+    let tooltip = `Date Label : ${arg.event.extendedProps.dateLabel}  - Event : ${arg.event.title}
+    `
     tippy(arg.el, {
-      content: arg.event.title,
+      content: tooltip,
       arrow:true
     });
   }
@@ -38,18 +29,34 @@ export default function Calander() {
       window.open(event.event.url, "_blank");
     }
   }
-useEffect(() => {  
+useEffect(() => { 
+  setCalendarEvents(mapNewEventsToOld())
   let allType = []
-  getUniqueListByTypes(events).map((item) => {
+  getUniqueListByTypes().map((item) => {
     allType.push(item.type)
   })
      setAllTypes([...allType])
      setShowTypes([...allType])
 }, [])
 
-  const getUniqueListByTypes = (list) => {
+const mapNewEventsToOld=()=>{
+  let newEvents=[]
+  eventsData.map(e=>{
+    newEvents.push({
+      title:e.heading,
+      type:e.type,
+      start: e.startDate,
+      end:e.endDate ? e.endDate : e.startDate,
+      url : e.link === null ? '' : e.link.url,
+      dateLabel: e.dateLabel
+    })
+  })
+  return newEvents;
+}
+
+  const getUniqueListByTypes = () => {
     const arrayUniqueByType = [
-      ...new Map(list.map((item) => [item['type'], item])).values(),
+      ...new Map(mapNewEventsToOld().map((item) => [item['type'], item])).values(),
     ]
     return arrayUniqueByType
   }
@@ -62,7 +69,7 @@ useEffect(() => {
     } else {
       values.push(type)
     }
-    events.map((e) => {
+    mapNewEventsToOld().map((e) => {
       if (values.includes(e.type)) {
         updatedEvents.push(e)
       }
@@ -92,7 +99,6 @@ useEffect(() => {
       headers: headers,
       filename: 'Events.csv'
     };
-
     return (
       <div className='app-container'>
         <div className='toggleButton'>
