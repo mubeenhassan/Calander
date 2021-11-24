@@ -101,10 +101,21 @@ const mapNewEventsToOld=()=>{
     };
     return (
       <div className='app-container'>
-        <div className='toggleButton'>
-          <button onClick={()=>setCalenderList(!calenderList)}>
-            <img src={calenderList ? list : cal} />
-          </button>
+        <div className='toggleButton'>         
+        <div class='button-switch'>
+          <input
+            type='checkbox'
+            id='switch-orange'
+            class='switch'
+            onClick={() => setCalenderList(!calenderList)}
+          />
+          <label for='switch-orange' class='lbl-off'>
+            Month
+          </label>
+          <label for='switch-orange' class='lbl-on'>
+            List
+          </label>
+        </div>
         </div>
         <div className='calender-container'>
           <div className='left-pane'>
@@ -144,7 +155,7 @@ const mapNewEventsToOld=()=>{
               headerToolbar={{
                 start: 'prev,next today',
                 center: 'title',
-                end: 'dayGridMonth,timeGridWeek,timeGridDay'
+                end: ''
               }}
               plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
               initialView='dayGridMonth'
